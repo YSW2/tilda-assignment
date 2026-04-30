@@ -1,8 +1,8 @@
 export type OpenApiResponse<T> = {
-    currentCount: Number;
+    currentCount: number;
     data: T[];
-    matchCount: Number;
-    page: Number;
-    perPage: Number;
-    totalCount: Number;
+    matchCount: number;
+    page: number;
+    perPage: number;
+    totalCount: number;
 };
