@@ -21,7 +21,7 @@ class UserCreate(UserBase):
     
     @field_validator('name')
     @classmethod
-    def validate_password(cls, v: str):
+    def validate_name(cls, v: str):
         if ' ' in v:
             raise ValueError('이름에 공백을 포함할 수 없습니다')
         if not 2 <= len(v) <= 8:

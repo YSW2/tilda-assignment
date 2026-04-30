@@ -1,11 +1,12 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from app.models import (
-    UserCreate, LoginRequest, LoginResponse, UserResponse, SuccessResponse
+    UserCreate, LoginRequest, LoginResponse, UserResponse,SuccessResponse
 )
-from app.database import (
-    get_user, create_user, verify_password, get_password_hash, 
-    create_access_token, get_current_user
+from app.database import get_user, create_user
+from app.auth import (
+    verify_password, get_password_hash, create_access_token, get_current_user
 )
+
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 
