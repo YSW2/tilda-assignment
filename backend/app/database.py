@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Dict
 from app.models import UserInDB
 
 users_db: Dict[str, UserInDB] = {}
