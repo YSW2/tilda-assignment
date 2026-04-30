@@ -1,8 +1,6 @@
-import type { MedicalStats } from './medicalStats';
-
-export type OpenApiResponse = {
+export type OpenApiResponse<T> = {
     currentCount: Number;
-    data: MedicalStats[];
+    data: T[];
     matchCount: Number;
     page: Number;
     perPage: Number;
