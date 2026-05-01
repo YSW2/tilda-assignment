@@ -14,7 +14,7 @@ export const openapiClient = axios.create({
 
 // 인증 서버 API 클라이언트
 export const authClient = axios.create({
-    baseURL: import.meta.env.VITE_AUTH_BASE_URL,
+    baseURL: `${import.meta.env.VITE_AUTH_BASE_URL}/api`,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',

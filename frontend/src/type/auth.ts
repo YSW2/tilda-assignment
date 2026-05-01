@@ -1,5 +1,8 @@
-export type User = {
+export type UserLogin = {
     email: string;
     password: string;
-    name: string;
 };
+
+export type UserSignup = {
+    name: string;
+} & UserLogin;
