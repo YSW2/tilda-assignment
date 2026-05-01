@@ -98,6 +98,7 @@ const options = {
                 callback: function (value: any) {
                     return value.toLocaleString();
                 },
+                count: 6,
                 color: '#6b7280', // gray-500
                 font: {
                     size: 11,
@@ -127,6 +128,7 @@ const options = {
                 callback: function (value: any) {
                     return value.toLocaleString();
                 },
+                count: 6,
                 color: '#6b7280', // gray-500
                 font: {
                     size: 11,

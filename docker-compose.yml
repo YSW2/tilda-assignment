@@ -7,14 +7,18 @@ services:
       - "3001:3001"
     environment:
       - SECRET_KEY=your-secret-key-change-in-production
+      - ALLOWED_ORIGINS=http://localhost:3000
     restart: unless-stopped
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        - VITE_AUTH_BASE_URL=http://localhost:3001
+        - VITE_OPENAPI_BASE_URL=https://api.odcloud.kr/api
+        - VITE_OPENAPI_SERVICE_KEY=${VITE_OPENAPI_SERVICE_KEY}
     ports:
       - "3000:80"
     depends_on:
       - backend
-    environment:
-      - VITE_AUTH_BASE_URL=http://localhost:3001
     restart: unless-stopped
