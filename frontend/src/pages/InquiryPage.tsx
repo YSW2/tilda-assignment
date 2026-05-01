@@ -4,7 +4,7 @@ import useInquiryForm from '../hook/useInquiryForm';
 import { FaCheck } from 'react-icons/fa';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
-import ErrorMessage from '../components/common/ErrorMessage';
+import FormField from '../components/common/FormField';
 
 const InquiryPage = () => {
     const { setMenu } = useLayoutStore();
@@ -94,10 +94,7 @@ const InquiryPage = () => {
                     <form onSubmit={handleSubmit} className="flex flex-col flex-1">
                         <div className="p-6 space-y-5 flex-1">
                             {/* 성함 */}
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                    성함 <span className="text-red-500">*</span>
-                                </label>
+                            <FormField label="성함" required error={errors.name}>
                                 <ValidatedInput
                                     type="text"
                                     name="name"
@@ -106,14 +103,10 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.name}
                                 />
-                                {errors.name && <ErrorMessage error={errors.name} />}
-                            </div>
+                            </FormField>
 
                             {/* 이메일 */}
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                    이메일 <span className="text-red-500">*</span>
-                                </label>
+                            <FormField label="이메일" required error={errors.email}>
                                 <ValidatedInput
                                     type="email"
                                     name="email"
@@ -122,14 +115,10 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.email}
                                 />
-                                {errors.email && <ErrorMessage error={errors.email} />}
-                            </div>
+                            </FormField>
 
                             {/* 회사 */}
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                    회사 <span className="text-gray-400 text-xs">(선택)</span>
-                                </label>
+                            <FormField label="회사" error={errors.company}>
                                 <ValidatedInput
                                     type="text"
                                     name="company"
@@ -138,14 +127,10 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.company}
                                 />
-                                {errors.company && <ErrorMessage error={errors.company} />}
-                            </div>
+                            </FormField>
 
                             {/* 내용 */}
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                    문의 내용 <span className="text-red-500">*</span>
-                                </label>
+                            <FormField label="문의 내용" required error={errors.content}>
                                 <textarea
                                     name="content"
                                     placeholder="문의하실 내용을 상세히 작성해주세요"
@@ -155,8 +140,7 @@ const InquiryPage = () => {
                                     required
                                     className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all resize-y border-gray-300 focus:ring-blue-500 focus:border-blue-500'`}
                                 />
-                                {errors.content && <ErrorMessage error={errors.content} />}
-                            </div>
+                            </FormField>
                         </div>
 
                         {/* 푸터 */}

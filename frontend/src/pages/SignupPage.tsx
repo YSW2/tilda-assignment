@@ -4,7 +4,7 @@ import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
-import ErrorMessage from '../components/common/ErrorMessage';
+import FormField from '../components/common/FormField';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -55,10 +55,7 @@ const SignupPage = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col flex-1">
                     <div className="p-6 space-y-5 flex-1">
                         {/* 이메일 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                이메일 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="이메일" required error={errors.email}>
                             <ValidatedInput
                                 type="email"
                                 name="email"
@@ -67,46 +64,33 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 error={errors.email}
                             />
-                            {errors.email && <ErrorMessage error={errors.email} />}
-                        </div>
+                        </FormField>
 
                         {/* 이름 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                이름 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="이름" required error={errors.name}>
                             <ValidatedInput
                                 type="text"
                                 name="name"
-                                placeholder="이름을 입력하세요"
+                                placeholder="변경할 이름을 입력하세요"
                                 value={formData.name}
                                 onChange={handleChange}
                                 error={errors.name}
                             />
-                            {errors.name && <ErrorMessage error={errors.name} />}
-                        </div>
+                        </FormField>
 
                         {/* 비밀번호 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                비밀번호 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="비밀번호" required error={errors.password}>
                             <ValidatedInput
                                 type="password"
-                                name="password"
+                                name="currentPassword"
                                 placeholder="비밀번호를 입력하세요"
                                 value={formData.password}
                                 onChange={handleChange}
-                                error={errors.password}
                             />
-                            {errors.password && <ErrorMessage error={errors.password} />}
-                        </div>
+                        </FormField>
 
                         {/* 비밀번호 확인 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                비밀번호 확인 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="비밀번호 확인" required error={errors.passwordConfirm}>
                             <ValidatedInput
                                 type="password"
                                 name="passwordConfirm"
@@ -115,10 +99,7 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 error={errors.passwordConfirm}
                             />
-                            {errors.passwordConfirm && (
-                                <ErrorMessage error={errors.passwordConfirm} />
-                            )}
-                        </div>
+                        </FormField>
                     </div>
 
                     {/* 푸터 */}

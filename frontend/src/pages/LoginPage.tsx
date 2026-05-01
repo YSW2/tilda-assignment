@@ -7,7 +7,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
-import ErrorMessage from '../components/common/ErrorMessage';
+import FormField from '../components/common/FormField';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -58,10 +58,7 @@ const LoginPage = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col flex-1">
                     <div className="p-6 space-y-5 flex-1">
                         {/* 이메일 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                이메일 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="이메일" error={errors.email}>
                             <ValidatedInput
                                 type="email"
                                 name="email"
@@ -70,14 +67,10 @@ const LoginPage = () => {
                                 onChange={handleChange}
                                 error={errors.email}
                             />
-                            {errors.email && <ErrorMessage error={errors.email} />}
-                        </div>
+                        </FormField>
 
                         {/* 비밀번호 */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                비밀번호 <span className="text-red-500">*</span>
-                            </label>
+                        <FormField label="비밀번호" error={errors.password}>
                             <div className="relative">
                                 <ValidatedInput
                                     type={showPassword ? 'text' : 'password'}
@@ -95,8 +88,7 @@ const LoginPage = () => {
                                     {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
                                 </button>
                             </div>
-                            {errors.password && <ErrorMessage error={errors.password} />}
-                        </div>
+                        </FormField>
                     </div>
 
                     {/* 푸터 */}

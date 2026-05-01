@@ -3,7 +3,7 @@ import { patchPassword } from '../../api/auth';
 import useEditPasswordForm from '../../hook/useEditPasswordForm';
 import ValidatedInput from '../common/ValidateInput';
 import SubmitButton from '../common/SubmitButton';
-import ErrorMessage from '../common/ErrorMessage';
+import FormField from '../common/FormField';
 
 const EditPasswordSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,10 +43,7 @@ const EditPasswordSection = () => {
             <form onSubmit={handleSubmit} className="flex flex-col flex-1">
                 <div className="p-6 space-y-5 flex-1">
                     {/* 현재 비밀번호 */}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            현재 비밀번호 <span className="text-red-500">*</span>
-                        </label>
+                    <FormField label="현재 비밀번호" required>
                         <ValidatedInput
                             type="password"
                             name="currentPassword"
@@ -54,13 +51,10 @@ const EditPasswordSection = () => {
                             value={formData.currentPassword}
                             onChange={handleChange}
                         />
-                    </div>
+                    </FormField>
 
                     {/* 새 비밀번호 */}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            새 비밀번호 <span className="text-red-500">*</span>
-                        </label>
+                    <FormField label="새 비밀번호" required error={errors.newPassword}>
                         <ValidatedInput
                             type="password"
                             name="newPassword"
@@ -69,14 +63,10 @@ const EditPasswordSection = () => {
                             onChange={handleChange}
                             error={errors.newPassword}
                         />
-                        {errors.newPassword && <ErrorMessage error={errors.newPassword} />}
-                    </div>
+                    </FormField>
 
                     {/* 새 비밀번호 확인*/}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            새 비밀번호 확인 <span className="text-red-500">*</span>
-                        </label>
+                    <FormField label="새 비밀번호 확인" required error={errors.newPasswordConfirm}>
                         <ValidatedInput
                             type="password"
                             name="newPasswordConfirm"
@@ -85,10 +75,7 @@ const EditPasswordSection = () => {
                             onChange={handleChange}
                             error={errors.newPasswordConfirm}
                         />
-                        {errors.newPasswordConfirm && (
-                            <ErrorMessage error={errors.newPasswordConfirm} />
-                        )}
-                    </div>
+                    </FormField>
                 </div>
 
                 {/* 푸터 */}

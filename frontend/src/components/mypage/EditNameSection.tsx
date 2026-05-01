@@ -2,9 +2,9 @@ import { useState, type SubmitEvent } from 'react';
 import useEditNameForm from '../../hook/useEditNameForm';
 import { useAuthStore } from '../../store/authStore';
 import { patchName } from '../../api/auth';
-import ValidatedInput from '../common/ValidateInput';
 import SubmitButton from '../common/SubmitButton';
-import ErrorMessage from '../common/ErrorMessage';
+import FormField from '../common/FormField';
+import ValidatedInput from '../common/ValidateInput';
 
 const EditNameSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,10 +45,7 @@ const EditNameSection = () => {
             <form onSubmit={handleSubmit} className="flex flex-col flex-1">
                 <div className="p-6 space-y-5 flex-1">
                     {/* 이름 */}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            이름 <span className="text-red-500">*</span>
-                        </label>
+                    <FormField label="이름" required error={errors.name}>
                         <ValidatedInput
                             type="text"
                             name="name"
@@ -57,21 +54,17 @@ const EditNameSection = () => {
                             onChange={handleChange}
                             error={errors.name}
                         />
-                        {errors.name && <ErrorMessage error={errors.name} />}
-                    </div>
+                    </FormField>
 
                     {/* 이메일 */}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            이메일 <span className="text-gray-400 text-xs">(변경 불가)</span>
-                        </label>
+                    <FormField label="이메일">
                         <ValidatedInput
                             disabled
                             type="email"
                             name="email"
                             value={user?.email || ''}
                         />
-                    </div>
+                    </FormField>
                 </div>
 
                 {/* 푸터 */}
