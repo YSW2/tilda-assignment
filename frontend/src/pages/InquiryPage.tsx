@@ -2,6 +2,7 @@ import { useState, type SubmitEvent } from 'react';
 import { useLayoutStore } from '../store/layoutStore';
 import useInquiryForm from '../hook/useInquiryForm';
 import { FaCheck } from 'react-icons/fa';
+import { RiErrorWarningFill } from 'react-icons/ri';
 
 const InquiryPage = () => {
     const { setMenu } = useLayoutStore();
@@ -111,17 +112,7 @@ const InquiryPage = () => {
                                 />
                                 {errors.name && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <svg
-                                            className="w-4 h-4"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
+                                        <RiErrorWarningFill color="#e53935" />
                                         <p className="text-sm">{errors.name}</p>
                                     </div>
                                 )}
@@ -148,17 +139,7 @@ const InquiryPage = () => {
                                 />
                                 {errors.email && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <svg
-                                            className="w-4 h-4"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
+                                        <RiErrorWarningFill color="#e53935" />
                                         <p className="text-sm">{errors.email}</p>
                                     </div>
                                 )}
@@ -185,17 +166,7 @@ const InquiryPage = () => {
                                 />
                                 {errors.company && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <svg
-                                            className="w-4 h-4"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
+                                        <RiErrorWarningFill color="#e53935" />
                                         <p className="text-sm">{errors.company}</p>
                                     </div>
                                 )}
@@ -222,17 +193,7 @@ const InquiryPage = () => {
                                 />
                                 {errors.content && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <svg
-                                            className="w-4 h-4"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
+                                        <RiErrorWarningFill color="#e53935" />
                                         <p className="text-sm">{errors.content}</p>
                                     </div>
                                 )}
