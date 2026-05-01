@@ -4,8 +4,8 @@ import { useAuthStore } from './store/authStore';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Layout from './components/layout/Layout';
-import ProtectedRoute from './components/ProtectedRoute';
 import MyPage from './pages/MyPage';
+import ProtectedRoute from './components/route/ProtectedRoute';
 
 function App() {
     const initialize = useAuthStore((state) => state.initialize);

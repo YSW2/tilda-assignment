@@ -11,6 +11,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useMemo } from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -23,41 +24,44 @@ const PatientPerChart = ({ data }: Param) => {
     const patientData = data.map((item) => item.환자수);
     const visitDayData = data.map((item) => item.입내원일수);
 
-    const chartData = {
-        labels,
-        datasets: [
-            {
-                label: '환자수',
-                data: patientData,
-                borderColor: 'rgb(59, 130, 246)', // Blue-500
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                pointBackgroundColor: 'rgb(59, 130, 246)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(59, 130, 246)',
-                borderWidth: 2,
-                pointRadius: 4,
-                pointHoverRadius: 6,
-                yAxisID: 'y-left',
-                tension: 0.3,
-            },
-            {
-                label: '입내원일수',
-                data: visitDayData,
-                borderColor: 'rgb(239, 68, 68)', // Red-500
-                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                pointBackgroundColor: 'rgb(239, 68, 68)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(239, 68, 68)',
-                borderWidth: 2,
-                pointRadius: 4,
-                pointHoverRadius: 6,
-                yAxisID: 'y-right',
-                tension: 0.3,
-            },
-        ],
-    };
+    const chartData = useMemo(
+        () => ({
+            labels,
+            datasets: [
+                {
+                    label: '환자수',
+                    data: patientData,
+                    borderColor: 'rgb(59, 130, 246)', // Blue-500
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    pointBackgroundColor: 'rgb(59, 130, 246)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(59, 130, 246)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    yAxisID: 'y-left',
+                    tension: 0.3,
+                },
+                {
+                    label: '입내원일수',
+                    data: visitDayData,
+                    borderColor: 'rgb(239, 68, 68)', // Red-500
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    pointBackgroundColor: 'rgb(239, 68, 68)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(239, 68, 68)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    yAxisID: 'y-right',
+                    tension: 0.3,
+                },
+            ],
+        }),
+        [labels, patientData, visitDayData],
+    );
 
     return (
         <div className="w-full">
