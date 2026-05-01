@@ -17,12 +17,12 @@ const LoginPage = () => {
         try {
             setIsSubmitting(true);
 
-            const response = await login({
+            const res = await login({
                 email: formData.email,
                 password: formData.password,
             });
 
-            authLogin(response.token, response.user);
+            authLogin(res.token, res.user);
             window.location.href = '/';
         } catch (error: any) {
             const apiError =

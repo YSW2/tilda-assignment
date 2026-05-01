@@ -24,3 +24,9 @@ export type SuccessResponse = {
     success: boolean;
     message: string;
 };
+
+export type PatchNameResponse = {
+    success: boolean;
+    message: string;
+    user: User;
+};
