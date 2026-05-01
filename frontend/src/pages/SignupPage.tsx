@@ -4,7 +4,7 @@ import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
 
 const SignupPage = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const { handleChange, formData, errors, isFormValid } = useSignupForm();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +22,7 @@ const SignupPage = () => {
             });
 
             alert('회원가입이 완료되었습니다!');
-            // navigate('/login');
+            navigate('/login');
         } catch (error: any) {
             const apiError =
                 error.response?.data?.message ||
@@ -128,9 +128,6 @@ const SignupPage = () => {
                             )}
                         </div>
                     </div>
-
-                    {/* API 에러
-                    {apiError && <p className="text-red-500 text-sm">{apiError}</p>} */}
 
                     {/* 제출 버튼 */}
                     <button
