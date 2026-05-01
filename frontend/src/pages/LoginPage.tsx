@@ -6,6 +6,7 @@ import { FaEye } from 'react-icons/fa6';
 import { FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import ValidatedInput from '../components/common/ValidateInput';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -60,19 +61,13 @@ const LoginPage = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                 이메일 <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <ValidatedInput
                                 type="email"
                                 name="email"
                                 placeholder="이메일을 입력하세요"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                    !formData.email
-                                        ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                        : errors.email
-                                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                          : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                }`}
+                                error={errors.email}
                             />
                             {errors.email && (
                                 <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -88,19 +83,13 @@ const LoginPage = () => {
                                 비밀번호 <span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
-                                <input
+                                <ValidatedInput
                                     type={showPassword ? 'text' : 'password'}
                                     name="password"
                                     placeholder="비밀번호를 입력하세요"
                                     value={formData.password}
                                     onChange={handleChange}
-                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                        !formData.password
-                                            ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                            : errors.password
-                                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                              : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                    }`}
+                                    error={errors.password}
                                 />
                                 <button
                                     type="button"

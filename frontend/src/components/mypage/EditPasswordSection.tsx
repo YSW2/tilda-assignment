@@ -2,6 +2,7 @@ import { useState, type SubmitEvent } from 'react';
 import { patchPassword } from '../../api/auth';
 import useEditPasswordForm from '../../hook/useEditPasswordForm';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import ValidatedInput from '../common/ValidateInput';
 
 const EditPasswordSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,13 +46,12 @@ const EditPasswordSection = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             현재 비밀번호 <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <ValidatedInput
                             type="password"
                             name="currentPassword"
                             placeholder="현재 비밀번호를 입력하세요"
                             value={formData.currentPassword}
                             onChange={handleChange}
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                         />
                     </div>
 
@@ -60,19 +60,13 @@ const EditPasswordSection = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             새 비밀번호 <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <ValidatedInput
                             type="password"
                             name="newPassword"
                             placeholder="새 비밀번호를 입력하세요"
                             value={formData.newPassword}
                             onChange={handleChange}
-                            className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                !formData.newPassword
-                                    ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                    : errors.newPassword
-                                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                      : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                            }`}
+                            error={errors.newPassword}
                         />
                         {errors.newPassword && (
                             <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -87,19 +81,13 @@ const EditPasswordSection = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             새 비밀번호 확인 <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <ValidatedInput
                             type="password"
                             name="newPasswordConfirm"
                             placeholder="새 비밀번호를 다시 입력하세요"
                             value={formData.newPasswordConfirm}
                             onChange={handleChange}
-                            className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                !formData.newPasswordConfirm
-                                    ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                    : errors.newPasswordConfirm
-                                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                      : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                            }`}
+                            error={errors.newPasswordConfirm}
                         />
                         {errors.newPasswordConfirm && (
                             <div className="mt-2 flex items-center gap-1 text-red-600">

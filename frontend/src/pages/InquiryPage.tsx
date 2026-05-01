@@ -3,6 +3,7 @@ import { useLayoutStore } from '../store/layoutStore';
 import useInquiryForm from '../hook/useInquiryForm';
 import { FaCheck } from 'react-icons/fa';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import ValidatedInput from '../components/common/ValidateInput';
 
 const InquiryPage = () => {
     const { setMenu } = useLayoutStore();
@@ -96,19 +97,13 @@ const InquiryPage = () => {
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                                     성함 <span className="text-red-500">*</span>
                                 </label>
-                                <input
+                                <ValidatedInput
                                     type="text"
                                     name="name"
                                     placeholder="성함을 입력하세요 (2~20자)"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                        !formData.name
-                                            ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                            : errors.name
-                                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                              : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                    }`}
+                                    error={errors.name}
                                 />
                                 {errors.name && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -123,19 +118,13 @@ const InquiryPage = () => {
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                                     이메일 <span className="text-red-500">*</span>
                                 </label>
-                                <input
+                                <ValidatedInput
                                     type="email"
                                     name="email"
                                     placeholder="이메일을 입력하세요"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                        !formData.email
-                                            ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                            : errors.email
-                                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                              : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                    }`}
+                                    error={errors.email}
                                 />
                                 {errors.email && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -150,19 +139,13 @@ const InquiryPage = () => {
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                                     회사 <span className="text-gray-400 text-xs">(선택)</span>
                                 </label>
-                                <input
+                                <ValidatedInput
                                     type="text"
                                     name="company"
                                     placeholder="회사명을 입력하세요 (2~20자)"
                                     value={formData.company}
                                     onChange={handleChange}
-                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                        !formData.company
-                                            ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                            : errors.company
-                                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                              : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                    }`}
+                                    error={errors.company}
                                 />
                                 {errors.company && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -183,13 +166,8 @@ const InquiryPage = () => {
                                     value={formData.content}
                                     onChange={handleChange}
                                     rows={8}
-                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all resize-y ${
-                                        !formData.content
-                                            ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                            : errors.content
-                                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                              : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                    }`}
+                                    required
+                                    className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all resize-y border-gray-300 focus:ring-blue-500 focus:border-blue-500'`}
                                 />
                                 {errors.content && (
                                     <div className="mt-2 flex items-center gap-1 text-red-600">

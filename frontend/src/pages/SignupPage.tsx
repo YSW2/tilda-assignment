@@ -3,6 +3,7 @@ import useSignupForm from '../hook/useSignupForm';
 import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import ValidatedInput from '../components/common/ValidateInput';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -57,19 +58,13 @@ const SignupPage = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                 이메일 <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <ValidatedInput
                                 type="email"
                                 name="email"
                                 placeholder="이메일을 입력하세요"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                    !formData.email
-                                        ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                        : errors.email
-                                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                          : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                }`}
+                                error={errors.email}
                             />
                             {errors.email && (
                                 <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -84,19 +79,13 @@ const SignupPage = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                 이름 <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <ValidatedInput
                                 type="text"
                                 name="name"
                                 placeholder="이름을 입력하세요"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                    !formData.name
-                                        ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                        : errors.name
-                                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                          : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                }`}
+                                error={errors.name}
                             />
                             {errors.name && (
                                 <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -111,19 +100,13 @@ const SignupPage = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                 비밀번호 <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <ValidatedInput
                                 type="password"
                                 name="password"
                                 placeholder="비밀번호를 입력하세요"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                    !formData.password
-                                        ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                        : errors.password
-                                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                          : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                }`}
+                                error={errors.password}
                             />
                             {errors.password && (
                                 <div className="mt-2 flex items-center gap-1 text-red-600">
@@ -138,19 +121,13 @@ const SignupPage = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                 비밀번호 확인 <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <ValidatedInput
                                 type="password"
                                 name="passwordConfirm"
                                 placeholder="비밀번호를 다시 입력하세요"
                                 value={formData.passwordConfirm}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-                                    !formData.passwordConfirm
-                                        ? 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                                        : errors.passwordConfirm
-                                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50'
-                                          : 'border-green-500 focus:ring-green-500 focus:border-green-500 bg-green-50'
-                                }`}
+                                error={errors.passwordConfirm}
                             />
                             {errors.passwordConfirm && (
                                 <div className="mt-2 flex items-center gap-1 text-red-600">
