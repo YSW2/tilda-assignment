@@ -3,7 +3,7 @@ import MedicalStatsTableSection from '../components/tables/MedicalStatsTableSect
 
 const DashboardHome = () => {
     return (
-        <div>
+        <div className="bg-gray-50 min-h-full">
             <MedicalStatsChartSection />
             <MedicalStatsTableSection />
         </div>
