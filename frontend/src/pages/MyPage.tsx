@@ -1,10 +1,7 @@
 import EditNameSection from '../components/mypage/EditNameSection';
 import EditPasswordSection from '../components/mypage/EditPasswordSection';
-import { useAuthStore } from '../store/authStore';
 
 const MyPage = () => {
-    const { user } = useAuthStore();
-
     return (
         <div className="bg-gray-50 min-h-full p-6">
             <div className="mb-6">
