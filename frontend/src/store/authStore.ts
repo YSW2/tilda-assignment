@@ -4,7 +4,7 @@ import type { User } from '../type/auth';
 type AuthStore = {
     user: User | null;
     token: string | null;
-    isAuthenticated: boolean;
+    isAuthenticated: boolean | null;
 
     initialize: () => void;
     login: (token: string, user: User) => void;
@@ -14,7 +14,7 @@ type AuthStore = {
 export const useAuthStore = create<AuthStore>((set) => ({
     user: null,
     token: null,
-    isAuthenticated: false,
+    isAuthenticated: null,
 
     initialize: () => {
         const token = localStorage.getItem('auth_token');
@@ -28,6 +28,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
                 localStorage.removeItem('auth_token');
                 localStorage.removeItem('auth_user');
             }
+        } else {
+            set({ isAuthenticated: false });
         }
     },
 

@@ -9,10 +9,10 @@ type Props = {
 const ProtectedRoute = ({ children }: Props) => {
     const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
-    if (!isAuthenticated) {
-        return <Navigate to="/login" replace />;
-    }
+    console.log(isAuthenticated);
 
-    return children;
+    if (isAuthenticated === false) {
+        return <Navigate to="/login" replace />;
+    } else if (isAuthenticated === true) return children;
 };
 export default ProtectedRoute;
