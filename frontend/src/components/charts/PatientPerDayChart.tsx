@@ -29,25 +29,39 @@ const PatientPerChart = ({ data }: Param) => {
             {
                 label: '환자수',
                 data: patientData,
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgb(59, 130, 246)', // Blue-500
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                pointBackgroundColor: 'rgb(59, 130, 246)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(59, 130, 246)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6,
                 yAxisID: 'y-left',
-                tension: 0.1,
+                tension: 0.3,
             },
             {
                 label: '입내원일수',
                 data: visitDayData,
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgb(239, 68, 68)', // Red-500
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                pointBackgroundColor: 'rgb(239, 68, 68)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(239, 68, 68)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6,
                 yAxisID: 'y-right',
-                tension: 0.1,
+                tension: 0.3,
             },
         ],
     };
 
     return (
-        <div style={{ width: '100%', padding: '0px' }}>
-            <div style={{ height: '400px' }}>
+        <div className="w-full">
+            <div className="h-[500px]">
                 <Line data={chartData} options={options} />
             </div>
         </div>
