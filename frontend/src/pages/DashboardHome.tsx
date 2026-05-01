@@ -1,7 +1,7 @@
 import MedicalStatsChartSection from '../components/charts/MedicalStatsChartSection';
 import MedicalStatsTableSection from '../components/tables/MedicalStatsTableSection';
 
-const Dashboard = () => {
+const DashboardHome = () => {
     return (
         <div>
             <MedicalStatsChartSection />
@@ -10,4 +10,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardHome;
