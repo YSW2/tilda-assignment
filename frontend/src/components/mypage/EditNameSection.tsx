@@ -5,6 +5,7 @@ import { patchName } from '../../api/auth';
 import SubmitButton from '../common/SubmitButton';
 import FormField from '../common/FormField';
 import ValidatedInput from '../common/ValidateInput';
+import toast from 'react-hot-toast';
 
 const EditNameSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,14 +20,14 @@ const EditNameSection = () => {
             const res = await patchName(formData.name);
             edit(res.user.name, res.user.email);
 
-            alert('회원정보 변경이 완료되었습니다');
+            toast.success('회원정보 변경이 완료되었습니다');
         } catch (error: any) {
             const apiError =
                 error.response?.data?.message ||
                 error.response?.data?.detail ||
                 '회원정보 변경에 실패했습니다';
 
-            alert(apiError);
+            toast.error(apiError);
         } finally {
             setIsSubmitting(false);
         }

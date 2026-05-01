@@ -5,6 +5,7 @@ import { signup } from '../api/auth';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
 import FormField from '../components/common/FormField';
+import toast from 'react-hot-toast';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const SignupPage = () => {
                 password: formData.password,
             });
 
-            alert('회원가입이 완료되었습니다!');
+            toast.success('회원가입이 완료되었습니다!');
             navigate('/login');
         } catch (error: any) {
             const apiError =
@@ -32,7 +33,7 @@ const SignupPage = () => {
                 error.response?.data?.detail ||
                 '회원가입에 실패했습니다';
 
-            alert(apiError);
+            toast.error(apiError);
         } finally {
             setIsSubmitting(false);
         }
