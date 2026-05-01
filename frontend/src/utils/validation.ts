@@ -28,3 +28,27 @@ export const validateName = (name: string): string | true => {
     }
     return true;
 };
+
+// 문의 폼 성함 검증 (2~20자)
+export const validateInquiryName = (name: string): string | true => {
+    if (!name.trim()) return '성함을 입력해주세요.';
+    if (name.length < 2 || name.length > 20) {
+        return '성함은 2~20자리로 입력해주세요.';
+    }
+    return true;
+};
+
+// 회사명 검증 (선택, 입력 시 2~20자)
+export const validateCompany = (company: string): string | true => {
+    if (!company.trim()) return true; // 선택 항목이므로 빈 값 허용
+    if (company.length < 2 || company.length > 20) {
+        return '회사명은 2~20자리로 입력해주세요.';
+    }
+    return true;
+};
+
+// 문의 내용 검증
+export const validateContent = (content: string): string | true => {
+    if (!content.trim()) return '내용을 입력해주세요.';
+    return true;
+};
