@@ -1,14 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import useSignupForm from '../hook/useSignupForm';
-import { useState, type ChangeEvent } from 'react';
+import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
 
 const SignupPage = () => {
     // const navigate = useNavigate();
+
     const { handleChange, formData, errors, isFormValid } = useSignupForm();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = async (e: ChangeEvent) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
