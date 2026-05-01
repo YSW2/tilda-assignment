@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useSignupForm from '../hook/useSignupForm';
 import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
@@ -140,9 +140,9 @@ const SignupPage = () => {
 
                     <p className="text-center text-sm">
                         이미 계정이 있으신가요?{' '}
-                        <a href="/login" className="text-blue-600 hover:underline">
+                        <Link to="/login" className="text-blue-600">
                             로그인
-                        </a>
+                        </Link>
                     </p>
                 </form>
             </div>

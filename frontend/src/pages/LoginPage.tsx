@@ -2,6 +2,7 @@ import { useState, type SubmitEvent } from 'react';
 import { login } from '../api/auth';
 import { useAuthStore } from '../store/authStore';
 import useLoginForm from '../hook/useLoginForm';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +23,7 @@ const LoginPage = () => {
             });
 
             authLogin(response.token, response.user);
-            alert('로그인 성공!');
+            window.location.href = '/';
         } catch (error: any) {
             const apiError =
                 error.response?.data?.message ||
@@ -133,9 +134,9 @@ const LoginPage = () => {
 
                     <p className="text-center text-sm">
                         계정이 없으신가요?{' '}
-                        <a href="/signup" className="text-blue-600 hover:underline">
+                        <Link to="/signup" className="text-blue-600">
                             회원가입
-                        </a>
+                        </Link>
                     </p>
                 </form>
             </div>
