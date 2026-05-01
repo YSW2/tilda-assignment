@@ -1,9 +1,9 @@
 import { useState, type SubmitEvent } from 'react';
 import { patchPassword } from '../../api/auth';
 import useEditPasswordForm from '../../hook/useEditPasswordForm';
-import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../common/ValidateInput';
 import SubmitButton from '../common/SubmitButton';
+import ErrorMessage from '../common/ErrorMessage';
 
 const EditPasswordSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -69,12 +69,7 @@ const EditPasswordSection = () => {
                             onChange={handleChange}
                             error={errors.newPassword}
                         />
-                        {errors.newPassword && (
-                            <div className="mt-2 flex items-center gap-1 text-red-600">
-                                <RiErrorWarningFill color="#e53935" />
-                                <p className="text-sm">{errors.newPassword}</p>
-                            </div>
-                        )}
+                        {errors.newPassword && <ErrorMessage error={errors.newPassword} />}
                     </div>
 
                     {/* 새 비밀번호 확인*/}
@@ -91,10 +86,7 @@ const EditPasswordSection = () => {
                             error={errors.newPasswordConfirm}
                         />
                         {errors.newPasswordConfirm && (
-                            <div className="mt-2 flex items-center gap-1 text-red-600">
-                                <RiErrorWarningFill color="#e53935" />
-                                <p className="text-sm">{errors.newPasswordConfirm}</p>
-                            </div>
+                            <ErrorMessage error={errors.newPasswordConfirm} />
                         )}
                     </div>
                 </div>

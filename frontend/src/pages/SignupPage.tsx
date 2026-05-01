@@ -2,9 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import useSignupForm from '../hook/useSignupForm';
 import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
-import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
+import ErrorMessage from '../components/common/ErrorMessage';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -67,12 +67,7 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 error={errors.email}
                             />
-                            {errors.email && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.email}</p>
-                                </div>
-                            )}
+                            {errors.email && <ErrorMessage error={errors.email} />}
                         </div>
 
                         {/* 이름 */}
@@ -88,12 +83,7 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 error={errors.name}
                             />
-                            {errors.name && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.name}</p>
-                                </div>
-                            )}
+                            {errors.name && <ErrorMessage error={errors.name} />}
                         </div>
 
                         {/* 비밀번호 */}
@@ -109,12 +99,7 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 error={errors.password}
                             />
-                            {errors.password && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.password}</p>
-                                </div>
-                            )}
+                            {errors.password && <ErrorMessage error={errors.password} />}
                         </div>
 
                         {/* 비밀번호 확인 */}
@@ -131,10 +116,7 @@ const SignupPage = () => {
                                 error={errors.passwordConfirm}
                             />
                             {errors.passwordConfirm && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.passwordConfirm}</p>
-                                </div>
+                                <ErrorMessage error={errors.passwordConfirm} />
                             )}
                         </div>
                     </div>

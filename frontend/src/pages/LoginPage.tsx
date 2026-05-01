@@ -5,9 +5,9 @@ import useLoginForm from '../hook/useLoginForm';
 import { FaEye } from 'react-icons/fa6';
 import { FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
+import ErrorMessage from '../components/common/ErrorMessage';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -70,12 +70,7 @@ const LoginPage = () => {
                                 onChange={handleChange}
                                 error={errors.email}
                             />
-                            {errors.email && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.email}</p>
-                                </div>
-                            )}
+                            {errors.email && <ErrorMessage error={errors.email} />}
                         </div>
 
                         {/* 비밀번호 */}
@@ -100,12 +95,7 @@ const LoginPage = () => {
                                     {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
                                 </button>
                             </div>
-                            {errors.password && (
-                                <div className="mt-2 flex items-center gap-1 text-red-600">
-                                    <RiErrorWarningFill color="#e53935" />
-                                    <p className="text-sm">{errors.password}</p>
-                                </div>
-                            )}
+                            {errors.password && <ErrorMessage error={errors.password} />}
                         </div>
                     </div>
 

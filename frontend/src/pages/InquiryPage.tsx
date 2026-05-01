@@ -2,9 +2,9 @@ import { useState, type SubmitEvent } from 'react';
 import { useLayoutStore } from '../store/layoutStore';
 import useInquiryForm from '../hook/useInquiryForm';
 import { FaCheck } from 'react-icons/fa';
-import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
+import ErrorMessage from '../components/common/ErrorMessage';
 
 const InquiryPage = () => {
     const { setMenu } = useLayoutStore();
@@ -106,12 +106,7 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.name}
                                 />
-                                {errors.name && (
-                                    <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <RiErrorWarningFill color="#e53935" />
-                                        <p className="text-sm">{errors.name}</p>
-                                    </div>
-                                )}
+                                {errors.name && <ErrorMessage error={errors.name} />}
                             </div>
 
                             {/* 이메일 */}
@@ -127,12 +122,7 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.email}
                                 />
-                                {errors.email && (
-                                    <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <RiErrorWarningFill color="#e53935" />
-                                        <p className="text-sm">{errors.email}</p>
-                                    </div>
-                                )}
+                                {errors.email && <ErrorMessage error={errors.email} />}
                             </div>
 
                             {/* 회사 */}
@@ -148,12 +138,7 @@ const InquiryPage = () => {
                                     onChange={handleChange}
                                     error={errors.company}
                                 />
-                                {errors.company && (
-                                    <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <RiErrorWarningFill color="#e53935" />
-                                        <p className="text-sm">{errors.company}</p>
-                                    </div>
-                                )}
+                                {errors.company && <ErrorMessage error={errors.company} />}
                             </div>
 
                             {/* 내용 */}
@@ -170,12 +155,7 @@ const InquiryPage = () => {
                                     required
                                     className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all resize-y border-gray-300 focus:ring-blue-500 focus:border-blue-500'`}
                                 />
-                                {errors.content && (
-                                    <div className="mt-2 flex items-center gap-1 text-red-600">
-                                        <RiErrorWarningFill color="#e53935" />
-                                        <p className="text-sm">{errors.content}</p>
-                                    </div>
-                                )}
+                                {errors.content && <ErrorMessage error={errors.content} />}
                             </div>
                         </div>
 

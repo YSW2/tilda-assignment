@@ -2,9 +2,9 @@ import { useState, type SubmitEvent } from 'react';
 import useEditNameForm from '../../hook/useEditNameForm';
 import { useAuthStore } from '../../store/authStore';
 import { patchName } from '../../api/auth';
-import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../common/ValidateInput';
 import SubmitButton from '../common/SubmitButton';
+import ErrorMessage from '../common/ErrorMessage';
 
 const EditNameSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,12 +57,7 @@ const EditNameSection = () => {
                             onChange={handleChange}
                             error={errors.name}
                         />
-                        {errors.name && (
-                            <div className="mt-2 flex items-center gap-1 text-red-600">
-                                <RiErrorWarningFill color="#e53935" />
-                                <p className="text-sm">{errors.name}</p>
-                            </div>
-                        )}
+                        {errors.name && <ErrorMessage error={errors.name} />}
                     </div>
 
                     {/* 이메일 */}
