@@ -4,6 +4,7 @@ import { useAuthStore } from '../../store/authStore';
 import { patchName } from '../../api/auth';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../common/ValidateInput';
+import SubmitButton from '../common/SubmitButton';
 
 const EditNameSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -80,19 +81,13 @@ const EditNameSection = () => {
 
                 {/* 푸터 */}
                 <div className="p-6 border-t border-gray-200 bg-gray-50">
-                    <button
+                    <SubmitButton
                         type="submit"
                         disabled={!isFormValid || isSubmitting}
-                        className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md"
+                        loading={isSubmitting}
                     >
-                        {isSubmitting ? (
-                            <span className="flex items-center justify-center gap-2">
-                                처리 중...
-                            </span>
-                        ) : (
-                            '정보 수정'
-                        )}
-                    </button>
+                        정보 수정
+                    </SubmitButton>
                 </div>
             </form>
         </div>

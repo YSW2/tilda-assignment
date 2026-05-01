@@ -3,6 +3,7 @@ import { patchPassword } from '../../api/auth';
 import useEditPasswordForm from '../../hook/useEditPasswordForm';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../common/ValidateInput';
+import SubmitButton from '../common/SubmitButton';
 
 const EditPasswordSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -100,19 +101,13 @@ const EditPasswordSection = () => {
 
                 {/* 푸터 */}
                 <div className="p-6 border-t border-gray-200 bg-gray-50">
-                    <button
+                    <SubmitButton
                         type="submit"
                         disabled={!isFormValid || isSubmitting}
-                        className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md"
+                        loading={isSubmitting}
                     >
-                        {isSubmitting ? (
-                            <span className="flex items-center justify-center gap-2">
-                                처리 중...
-                            </span>
-                        ) : (
-                            '비밀번호 변경'
-                        )}
-                    </button>
+                        비밀번호 변경
+                    </SubmitButton>
                 </div>
             </form>
         </div>

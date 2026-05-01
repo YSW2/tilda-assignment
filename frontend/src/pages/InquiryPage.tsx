@@ -4,6 +4,7 @@ import useInquiryForm from '../hook/useInquiryForm';
 import { FaCheck } from 'react-icons/fa';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
+import SubmitButton from '../components/common/SubmitButton';
 
 const InquiryPage = () => {
     const { setMenu } = useLayoutStore();
@@ -180,13 +181,9 @@ const InquiryPage = () => {
 
                         {/* 푸터 */}
                         <div className="p-6 border-t border-gray-200 bg-gray-50">
-                            <button
-                                type="submit"
-                                disabled={!isFormValid}
-                                className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md"
-                            >
+                            <SubmitButton type="submit" disabled={!isFormValid}>
                                 문의 제출
-                            </button>
+                            </SubmitButton>
                         </div>
                     </form>
                 </div>

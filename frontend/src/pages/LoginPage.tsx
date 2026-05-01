@@ -7,6 +7,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
+import SubmitButton from '../components/common/SubmitButton';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -110,19 +111,13 @@ const LoginPage = () => {
 
                     {/* 푸터 */}
                     <div className="p-6 border-t border-gray-200 bg-gray-50">
-                        <button
+                        <SubmitButton
                             type="submit"
                             disabled={!isFormValid || isSubmitting}
-                            className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md"
+                            loading={isSubmitting}
                         >
-                            {isSubmitting ? (
-                                <span className="flex items-center justify-center gap-2">
-                                    처리 중...
-                                </span>
-                            ) : (
-                                '로그인'
-                            )}
-                        </button>
+                            로그인
+                        </SubmitButton>
 
                         <p className="text-center text-sm mt-4 text-gray-600">
                             계정이 없으신가요?{' '}

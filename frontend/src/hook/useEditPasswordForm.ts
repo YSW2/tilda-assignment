@@ -17,10 +17,7 @@ const useEditPasswordForm = () => {
     const getFieldError = (name: string, value: string, currentFormData = formData): string => {
         if (!value) return '';
 
-        if (name === 'currentPassword') {
-            const result = validatePassword(value);
-            return result !== true ? result : '';
-        } else if (name === 'newPassword') {
+        if (name === 'newPassword') {
             const result = validatePassword(value);
             if (result !== true) return result;
 

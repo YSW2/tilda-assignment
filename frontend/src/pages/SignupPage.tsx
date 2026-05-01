@@ -4,6 +4,7 @@ import { useState, type SubmitEvent } from 'react';
 import { signup } from '../api/auth';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import ValidatedInput from '../components/common/ValidateInput';
+import SubmitButton from '../components/common/SubmitButton';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -140,19 +141,13 @@ const SignupPage = () => {
 
                     {/* 푸터 */}
                     <div className="p-6 border-t border-gray-200 bg-gray-50">
-                        <button
+                        <SubmitButton
                             type="submit"
                             disabled={!isFormValid || isSubmitting}
-                            className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md"
+                            loading={isSubmitting}
                         >
-                            {isSubmitting ? (
-                                <span className="flex items-center justify-center gap-2">
-                                    처리 중...
-                                </span>
-                            ) : (
-                                '회원가입'
-                            )}
-                        </button>
+                            회원가입
+                        </SubmitButton>
 
                         <p className="text-center text-sm mt-4 text-gray-600">
                             이미 계정이 있으신가요?{' '}
