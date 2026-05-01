@@ -19,6 +19,12 @@ const Header = () => {
                     <>
                         <span className="text-gray-500 text-sm">{user?.name}님</span>
                         <button
+                            onClick={() => navigate('/mypage')}
+                            className="px-4 py-2 bg-green-500 text-white rounded-md text-sm font-medium hover:bg-green-600 transition-colors"
+                        >
+                            마이페이지
+                        </button>
+                        <button
                             onClick={handleLogout}
                             className="px-4 py-2 bg-red-500 text-white rounded-md text-sm font-medium hover:bg-red-600 transition-colors"
                         >
