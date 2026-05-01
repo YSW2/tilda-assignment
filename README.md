@@ -44,6 +44,10 @@ npm install
 npm run dev
 ```
 
+## API 명세표
+
+https://tilda-assignment-hrgx.onrender.com/docs
+
 ---
 
 ## 기술 스택

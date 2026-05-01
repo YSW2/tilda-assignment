@@ -4,7 +4,6 @@ import MedicalStatsTable from './MedicalStatsTable';
 import TablePagination from './TablePagination';
 import {
     getCoreRowModel,
-    getFilteredRowModel,
     getPaginationRowModel,
     getSortedRowModel,
     useReactTable,
@@ -50,7 +49,6 @@ const MedicalStatsTableSection = () => {
         columns,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(), // 정렬 기능
-        getFilteredRowModel: getFilteredRowModel(), // 필터링 기능
         getPaginationRowModel: getPaginationRowModel(), // 페이지네이션
         initialState: {
             pagination: {

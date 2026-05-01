@@ -82,10 +82,11 @@ const SignupPage = () => {
                         <FormField label="비밀번호" required error={errors.password}>
                             <ValidatedInput
                                 type="password"
-                                name="currentPassword"
+                                name="password"
                                 placeholder="비밀번호를 입력하세요"
                                 value={formData.password}
                                 onChange={handleChange}
+                                error={errors.password}
                             />
                         </FormField>
 
