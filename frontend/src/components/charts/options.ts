@@ -59,6 +59,9 @@ const options = {
     },
     scales: {
         x: {
+            afterFit(scale: any) {
+                scale.height = 100;
+            },
             title: {
                 display: true,
                 text: '진료과목(표시과목)',
@@ -85,6 +88,9 @@ const options = {
         'y-left': {
             type: 'linear' as const,
             position: 'left' as const,
+            afterFit(scale: any) {
+                scale.width = 90;
+            },
             title: {
                 display: true,
                 text: '환자수',
@@ -112,6 +118,9 @@ const options = {
         'y-right': {
             type: 'linear' as const,
             position: 'right' as const,
+            afterFit(scale: any) {
+                scale.width = 90;
+            },
             title: {
                 display: true,
                 text: '입내원일수',
