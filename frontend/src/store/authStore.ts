@@ -9,6 +9,7 @@ type AuthStore = {
     initialize: () => void;
     login: (token: string, user: User) => void;
     logout: () => void;
+    edit: (name: string, email: string) => void;
 };
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -43,5 +44,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_user');
         set({ token: null, user: null, isAuthenticated: false });
+    },
+
+    edit: (name: string, email: string) => {
+        const user = { name, email };
+        localStorage.setItem('auth_user', JSON.stringify(user));
+        set({ user });
     },
 }));

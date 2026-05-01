@@ -1,5 +1,7 @@
+import EditNameSection from '../components/mypage/EditNameSection';
+
 const MyPage = () => {
-    return <div>MyPage</div>;
+    return <EditNameSection />;
 };
 
 export default MyPage;
