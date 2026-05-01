@@ -1,5 +1,5 @@
 import { validateEmail, validatePassword, validateName } from '../utils/validation';
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 
 const useSignupForm = () => {
     const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const useSignupForm = () => {
         return '';
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
 

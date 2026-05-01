@@ -1,47 +1,16 @@
-import { useState, type ChangeEvent } from 'react';
+import { useState, type SubmitEvent } from 'react';
 import { login } from '../api/auth';
 import { useAuthStore } from '../store/authStore';
-import { validateEmail, validatePassword } from '../utils/validation';
+import useLoginForm from '../hook/useLoginForm';
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
-
-    const [errors, setErrors] = useState({
-        email: '',
-        password: '',
-    });
-
     const [showPassword, setShowPassword] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { handleChange, formData, errors, isFormValid } = useLoginForm();
 
     const authLogin = useAuthStore((state) => state.login);
 
-    const getFieldError = (name: string, value: string): string => {
-        if (!value) return '';
-
-        if (name === 'email') {
-            const result = validateEmail(value);
-            return result !== true ? result : '';
-        } else if (name === 'password') {
-            const result = validatePassword(value);
-            return result !== true ? result : '';
-        }
-
-        return '';
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-
-        const error = getFieldError(name, value);
-        setErrors((prev) => ({ ...prev, [name]: error }));
-    };
-
-    const handleSubmit = async (e: ChangeEvent) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
@@ -52,9 +21,7 @@ const LoginPage = () => {
                 password: formData.password,
             });
 
-            // authStore에 로그인 정보 저장
             authLogin(response.token, response.user);
-
             alert('로그인 성공!');
         } catch (error: any) {
             const apiError =
@@ -67,8 +34,6 @@ const LoginPage = () => {
             setIsSubmitting(false);
         }
     };
-
-    const isFormValid = formData.email && formData.password && !errors.email && !errors.password;
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
