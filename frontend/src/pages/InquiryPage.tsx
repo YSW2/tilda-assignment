@@ -61,7 +61,9 @@ const InquiryPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {/* 성함 */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">*성함</label>
+                        <label className="block text-sm font-medium mb-1">
+                            <span className="text-red-500">*</span> 성함
+                        </label>
                         <input
                             type="text"
                             name="name"
@@ -82,7 +84,9 @@ const InquiryPage = () => {
 
                     {/* 이메일 */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">*이메일</label>
+                        <label className="block text-sm font-medium mb-1">
+                            <span className="text-red-500">*</span> 이메일
+                        </label>
                         <input
                             type="email"
                             name="email"
@@ -126,7 +130,9 @@ const InquiryPage = () => {
 
                     {/* 내용 */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">*내용</label>
+                        <label className="block text-sm font-medium mb-1">
+                            <span className="text-red-500">*</span> 내용
+                        </label>
                         <textarea
                             name="content"
                             value={formData.content}
