@@ -13,3 +13,21 @@ def create_user(email: str, name: str, hashed_password: str):
     user = UserInDB(email=email, name=name, hashed_password=hashed_password)
     users_db[email] = user
     return user
+
+def update_user_name(email: str, new_name: str) -> UserInDB:
+    user = users_db.get(email)
+    if not user:
+        raise ValueError("사용자를 찾을 수 없습니다")
+    
+    user.name = new_name
+    users_db[email] = user
+    return user
+
+def update_user_password(email: str, new_hashed_password: str) -> UserInDB:
+    user = users_db.get(email)
+    if not user:
+        raise ValueError("사용자를 찾을 수 없습니다")
+    
+    user.hashed_password = new_hashed_password
+    users_db[email] = user
+    return user
