@@ -40,7 +40,7 @@ export const validateInquiryName = (name: string): string | true => {
 
 // 회사명 검증 (선택, 입력 시 2~20자)
 export const validateCompany = (company: string): string | true => {
-    if (!company.trim()) return true; // 선택 항목이므로 빈 값 허용
+    if (!company.trim()) return true;
     if (company.length < 2 || company.length > 20) {
         return '회사명은 2~20자리로 입력해주세요.';
     }

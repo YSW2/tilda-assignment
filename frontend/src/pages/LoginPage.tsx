@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import ValidatedInput from '../components/common/ValidateInput';
 import SubmitButton from '../components/common/SubmitButton';
 import FormField from '../components/common/FormField';
+import toast from 'react-hot-toast';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +36,7 @@ const LoginPage = () => {
                 error.response?.data?.detail ||
                 '로그인에 실패했습니다';
 
-            alert(apiError);
+            toast.error(apiError);
         } finally {
             setIsSubmitting(false);
         }

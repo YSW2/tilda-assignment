@@ -4,6 +4,7 @@ import useEditPasswordForm from '../../hook/useEditPasswordForm';
 import ValidatedInput from '../common/ValidateInput';
 import SubmitButton from '../common/SubmitButton';
 import FormField from '../common/FormField';
+import toast from 'react-hot-toast';
 
 const EditPasswordSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,14 +16,14 @@ const EditPasswordSection = () => {
         try {
             setIsSubmitting(true);
             await patchPassword(formData.currentPassword, formData.newPassword);
-            alert('비밀번호 변경이 완료되었습니다');
+            toast.success('비밀번호 변경이 완료되었습니다');
         } catch (error: any) {
             const apiError =
                 error.response?.data?.message ||
                 error.response?.data?.detail ||
                 '비밀번호 변경에 실패했습니다';
 
-            alert(apiError);
+            toast.error(apiError);
         } finally {
             setIsSubmitting(false);
         }
